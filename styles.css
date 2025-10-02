@@ -1,0 +1,2239 @@
+/* 
+Required CSS3 rules mentioned in the cw:
+1. @font-face / Google Fonts 
+2. Colors including semi-transparent 
+3. Shadows 
+4. Text effects 
+5. Attribute selectors 
+6. Pseudo elements with generated content 
+7. User action pseudo class 
+8. Child combinator 
+9. Structural selectors 
+10. Negation pseudo class 
+11. Nth pseudo class 
+12. Validity pseudo class 
+13. Relational selector 
+14. Border 
+15. Rounded corners 
+16. Gradient 
+17. Transforms 
+18. Transitions 
+19. Animations 
+20. Specificity considerations 
+21. Good comments 
+*/
+
+/*Reset styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif; /* 1. Font - Using Google Fonts */
+}
+
+html {
+    font-size: 62.5%;
+    background-color: black;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-padding-top: 80px;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+}
+
+/* Header with nav bar */
+header {
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: rgba(0, 0, 0, 0.3); /* 2. Semi-transparent color (rgba) */
+    filter: drop-shadow(10px); /* 3. Shadow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-family: "Rock Salt", cursive; /* 1. Special font using Google Fonts */
+    font-size: 3rem;
+    color: #9C0D38;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding-top: 25px;
+}
+
+/* 7. User action pseudo class - :hover */
+.logo:hover {
+    transform: scale(1.1);  /* 17. Transform */
+}
+
+.nav {
+    margin-top: 0px;
+    padding-top: 30px;
+    width: 100%;
+    height: 70px;
+    background: rgba(17, 17, 17, 0.6); /* 2. Semi-transparent background */
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    padding: 0 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* 3. Box shadow */
+}
+
+.nav-name {
+    color: white;
+}
+
+.nav a {
+    position: relative;
+    font-size: 1.9rem;
+    margin-left: 4rem;
+    font-weight: 700;
+    transition: color 0.3s ease;  /* 18. Transition */
+    text-decoration: none;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+/* 6. Pseudo element with generated content - ::after */
+.nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px; 
+    width: 0;
+    height: 3px;
+    background-color: #9AE5E6;
+    transition: width 0.3s ease;  /* 18. Transition */
+}
+
+/* 7. User action pseudo class - :hover combined with ::after */
+.nav a:hover::after {
+    width: 100%;
+}
+
+.nav a:hover {
+    color: #9AE5E6;
+}
+
+.nav a.active {
+    color: #9AE5E6;
+}
+
+.nav a.active::after {
+    width: 100%;
+}
+
+section {
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+
+/*Home Section */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: black;
+    min-height: 100vh;
+    padding: 10rem 9% 5rem;
+    position: relative;
+}
+
+/* 8. Child combinator - direct child selector */
+.home > .home-content > h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+span {
+    color: #a8f9ff;
+}
+
+.home-content h3 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.home-content p {
+    font-size: 1.6rem;
+}
+
+.home-img img {
+    filter: grayscale(100%);
+    width: 32vw;
+    height: 32vw;
+    object-fit: cover;
+    border-radius: 50%;   /* 15. Rounded corners */
+    cursor: pointer;
+    animation: floatImage 4s ease-in-out infinite;   /* 19. Animation */
+    transition: 0.4s ease;   /* 18. Transition */
+}
+
+/* 19. Keyframe Animation */
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-24px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Social icons */
+
+/* 5. Attribute selector [data-platform] */
+.social-icons a[data-platform] {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;  /* 2. Semi-transparent */
+    border: 0.2rem solid #a8f9ff;  /* 14. Border */
+    font-size: 2rem;
+    border-radius: 50%;  /* 15. Rounded corners */
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease; /* 18. Transition */
+    color: #a8f9ff;
+}
+
+/* 5. Attribute selector with value [data-platform="linkedin"] */
+.social-icons a[data-platform="linkedin"]:hover {
+    background-color: #0077B5; 
+    border-color: #0077B5;
+    color: white;
+}
+
+.social-icons a[data-platform="github"]:hover {
+    background-color: #181717; 
+    border-color: #181717;
+    color: white;
+}
+
+.social-icons a[data-platform="instagram"]:hover { 
+    background: radial-gradient(circle at 30% 107%, 
+    #fdf497 0%, #fdf497 5%, 
+    #fd5949 45%, #d6249f 60%, #285AEB 90%);  /* 16. Gradient */
+    border-color: #d6249f;  
+    color: white;
+}
+
+/* 7. User action pseudo class - :hover */
+.social-icons a:hover {
+    color: black;
+    transform: scale(1.3) translateY(-5px);  /* 17. Transform with multiple values */
+    box-shadow: 0 0 25px #a8f9ff;  /* 3. Box shadow */
+}
+
+
+/* button */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: black;
+    border-radius: 4rem; /* 15. Rounded corners */
+    font-size: 1.6rem;
+    color: #a8f9ff;
+    letter-spacing: 0.3rem;  /* 4. Text effect - letter spacing */
+    font-weight: 600;
+    border: 2px solid #a8f9ff;  /* 14. Border */
+    transition: 0.3s ease;   /* 18. Transition */
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.03);   /* 17. Transform */
+    background-color: #a8f9ff;
+    color: black;
+    box-shadow: 0 0 25px #a8f9ff;  /* 3. Box shadow */
+}
+
+/* typing text */
+.typing-text {
+    font-size: 3.4rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #a8f9ff;
+    width: 0;
+    animation: typing 4s steps(35, end) forwards,   /* 19. Animation with multiple properties */
+            blink 0.7s step-end infinite;
+}
+
+/* 19. Keyframe Animation - typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 35ch; }
+}
+
+/* 19. Keyframe Animation - blink effect */
+@keyframes blink {
+    0%, 50%, 100% { border-color: #a8f9ff; }
+    25%, 75% { border-color: transparent; }
+}
+
+/* About Section */
+.about {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    background: linear-gradient(to bottom, #353B3F, black);   /* 16. Gradient background */
+    min-height: 100vh; 
+    padding: 10rem 9% 5rem;
+}
+
+.about-img img {
+    width: 32vw;
+    height: 32vw;
+    object-fit: cover;
+    border-radius: 50%;    /* 15. Rounded corners */
+    border: 2px solid #a8f9ff;   /* 14. Border */
+    box-shadow: 0 0 25px #a8f9ff;     /* 3. Box shadow */
+    cursor: pointer;
+    transition: 0.4s ease;    /* 18. Transition */
+}
+
+.about-img:hover img {
+    /* 3. Multiple shadows */
+    box-shadow: 0 0 25px #a8f9ff,
+                0 0 35px #a8f9ff,
+                0 0 45px #a8f9ff;
+}
+
+.heading {
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);    /* 4. Text effect - text shadow */
+}
+
+.about-content {
+    max-width: 50rem;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.about-content h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+    line-height: 1.6;
+}
+
+/* Read-more toggle */
+.more-details-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    background: rgba(255, 159, 228, 0.05);   /* 2. Semi-transparent background */
+    border: 2px solid #a8f9ff;   /* 14. Border */
+    border-radius: 2rem;    /* 15. Rounded corners */
+    transition: 0.3s ease;   /* 18. Transition */
+    overflow: hidden;
+}
+
+.read-more-summary {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #a8f9ff;
+    background-color: black;
+    cursor: pointer;
+    list-style: none;
+    border: none;
+    text-align: center;
+    transition: all 0.3s ease;    /* 18. Transition */
+}
+
+.read-more-summary:hover {
+    background-color: #a8f9ff;
+    color: black;
+    box-shadow: 0 0 25px #a8f9ff;   /* 3. Box shadow */
+}
+
+/* 10. Negation pseudo class - hide default marker */
+.read-more-summary::-webkit-details-marker {
+    display: none;
+}
+
+.more-details {
+    padding: 1.5rem 2rem;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+/* 19. Animation for details opening */
+.more-details-wrapper[open] .more-details {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 6. Pseudo element with generated content - ::before */
+.more-details p::before {
+    content: "→ ";
+    color: #a8f9ff;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Education Section */
+.education {
+    background: linear-gradient(to bottom, black, #1a1a2e);  /* 16. Gradient background */
+    min-height: 100vh;
+    padding: 10rem 9% 5rem;
+    margin-top: 2rem;
+}
+
+.education .heading {
+    margin-bottom: 5rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+/* 6. Pseudo element - ::before for timeline line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);  /* 17. Transform */
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #a8f9ff, transparent);   /* 16. Gradient */
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 2rem 4rem;
+    margin-bottom: 4rem;
+    animation: slideIn 0.6s ease-in-out;   /* 19. Animation */
+}
+
+/* 19. Keyframe Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 11. Nth pseudo class - :nth-child(odd) */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+/* 11. Nth pseudo class - :nth-child(even) */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 2rem;
+    width: 20px;
+    height: 20px;
+    background-color: #a8f9ff;
+    border-radius: 50%;    /* 15. Rounded corners */
+    box-shadow: 0 0 20px #a8f9ff;    /* 3. Box shadow */
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -10px;
+}
+
+.timeline-date {
+    font-size: 1.4rem;
+    color: #a8f9ff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.timeline-content {
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    padding: 2rem;
+    border-radius: 1rem;    /* 15. Rounded corners */
+    border: 1px solid rgba(168, 249, 255, 0.2);     /* 14. Border */
+    transition: 0.3s ease;     /* 18. Transition */
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);    /* 17. Transform */
+    box-shadow: 0 5px 30px rgba(168, 249, 255, 0.3);     /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+.timeline-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.timeline-content h4 {
+    font-size: 1.8rem;
+    color: #a8f9ff;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.education-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.timeline-item:nth-child(odd) .education-tags {
+    justify-content: flex-end;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(168, 249, 255, 0.1);     /* 2. Semi-transparent background */
+    border: 1px solid #a8f9ff;      /* 14. Border */
+    border-radius: 2rem;      /* 15. Rounded corners */
+    font-size: 1.2rem;
+    color: #a8f9ff;
+    transition: 0.3s ease;      /* 18. Transition */
+}
+
+.tag:hover {
+    background: #a8f9ff;
+    color: black;
+}
+
+/* Certifications */
+.certifications {
+    margin-top: 8rem;
+    text-align: center;
+}
+
+.certifications h3 {
+    font-size: 3.5rem;
+    color: #a8f9ff;
+    margin-bottom: 4rem;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 5. Attribute selector [href^="https"] - selects external links */
+.cert-card[href^="https"] {
+    background: rgba(168, 249, 255, 0.05);     /* 2. Semi-transparent background */
+    padding: 3rem 2rem;
+    border-radius: 1rem;     /* 15. Rounded corners */
+    border: 1px solid rgba(168, 249, 255, 0.2);     /* 14. Border */
+    transition: 0.3s ease;     /* 18. Transition */
+    text-align: center;
+    display: block;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);     /* 17. Transform */
+    box-shadow: 0 10px 40px rgba(168, 249, 255, 0.3);      /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+.cert-card i {
+    font-size: 4rem;
+    color: #a8f9ff;
+    margin-bottom: 1.5rem;
+}
+
+.cert-card h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cert-card p {
+    font-size: 1.4rem;
+    color: #ddd;
+}
+
+/* Projects Section */
+.projects {
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);      /* 16. Gradient background */
+    min-height: 100vh;
+    padding: 10rem 9% 5rem;
+}
+
+.projects-heading {
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 30px;
+    padding-top: 0px;
+}
+
+.projects .projects-heading {
+    margin-bottom: 2rem;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ddd;
+    margin-bottom: 6rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 4rem;
+    margin-top: 5rem;
+}
+
+/* Using article tag as semantic element */
+.project-card {
+    background: rgba(168, 249, 255, 0.03);  /* 2. Semi-transparent background */
+    border-radius: 1.5rem;   /* 15. Rounded corners */
+    overflow: hidden;
+    border: 1px solid rgba(168, 249, 255, 0.1);     /* 14. Border */
+    transition: 0.4s ease;   /* 18. Transition */
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-15px);      /* 17. Transform */
+    box-shadow: 0 15px 50px rgba(168, 249, 255, 0.3);   /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);    /* 16. Gradient background */
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;   /* 18. Transition */
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);    /* 17. Transform */
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);    /* 2. Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    transition: 0.4s ease;    /* 18. Transition */
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link {
+    width: 50px;
+    height: 50px;
+    background-color: #a8f9ff;
+    border-radius: 50%;    /* 15. Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 2rem;
+    transition: 0.3s ease;  /* 18. Transition */
+}
+
+.project-link:hover {
+    background-color: white;
+    transform: scale(1.2);   /* 17. Transform */
+}
+
+.project-info {
+    padding: 2.5rem;
+}
+
+.project-category {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(168, 249, 255, 0.1);   /* 2. Semi-transparent background */
+    border: 1px solid #a8f9ff;   /* 14. Border */
+    border-radius: 2rem;    /* 15. Rounded corners */
+    font-size: 1.2rem;
+    color: #a8f9ff;
+    margin-bottom: 1.5rem;
+}
+
+.project-info h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.project-info p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 2rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-tech span {
+    padding: 0.5rem 1.2rem;
+    background: rgba(168, 249, 255, 0.1);  /* 2. Semi-transparent background */
+    border: 1px solid rgba(168, 249, 255, 0.3);  /* 14. Border */
+    border-radius: 0.5rem;   /* 15. Rounded corners */
+    font-size: 1.2rem;
+    color: #a8f9ff;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.project-tech span:hover {
+    background: #a8f9ff;
+    color: black;
+}
+
+/* Blogs Part */
+
+/* Blog Header */
+.blog-header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);  /* 16. Gradient background */
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12rem 9% 8rem;
+}
+
+.blog-header-content h1 {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);   /* 4. Text effect */
+}
+
+.blog-header-content p {
+    font-size: 1.8rem;
+    color: #ddd;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Main Blog Layout */
+.blog-main {
+    background: linear-gradient(to bottom, #16213e, #0f3460, black);  /* 16. Gradient*/
+    padding: 8rem 9% 5rem;
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 5rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.blog-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+/* Individual Blog Post Full */
+.blog-post-full {
+    background: rgba(168, 249, 255, 0.03);   /* 2. Semi-transparent background */
+    border-radius: 2rem;   /* 15. Rounded corners */
+    overflow: hidden;
+    border: 1px solid rgba(168, 249, 255, 0.15);  /* 14. Border */
+    transition: 0.4s ease;   /* 18. Transition */
+}
+
+.blog-post-full:hover {
+    box-shadow: 0 10px 50px rgba(168, 249, 255, 0.2);   /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+/* Blog Post Header */
+.blog-post-header {
+    position: relative;
+}
+
+.blog-featured-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    background: rgba(0, 0, 0, 0.5);    /* 2. Semi-transparent background */
+    align-items: center;
+}
+
+.blog-category {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: rgba(168, 249, 255, 0.15);   /* 2. Semi-transparent background */
+    border: 1px solid #a8f9ff;   /* 14. Border */
+    border-radius: 2rem;  /* 15. Rounded corners */
+    font-size: 1.3rem;
+    color: #a8f9ff;
+    font-weight: 600;
+    text-transform: uppercase;  /* 4. Text effect */
+    letter-spacing: 0.1rem;
+}
+
+.blog-date,
+.blog-read-time {
+    font-size: 1.4rem;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.blog-date i,
+.blog-read-time i {
+    color: #a8f9ff;
+}
+
+/* Blog Post Content */
+.blog-post-content {
+    padding: 4rem;
+}
+
+/* 8. Child combinator - direct child heading */
+.blog-post-content > h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    color: white;
+    line-height: 1.3;
+}
+
+.blog-intro {
+    font-size: 2rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border-left: 4px solid #a8f9ff;  /* 14. Border with special styling */
+    border-radius: 0.5rem;   /* 15. Rounded corners */
+    font-style: italic;
+}
+
+.blog-post-content h3 {
+    font-size: 2.6rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #a8f9ff;
+}
+
+.blog-post-content h4 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #9AE5E6;
+}
+
+.blog-post-content p {
+    font-size: 1.7rem;
+    line-height: 1.9;
+    color: #ddd;
+    margin-bottom: 2rem;
+}
+
+/* Blog Quote */
+.blog-quote {
+    padding: 3rem;
+    margin: 3rem 0;
+    background: rgba(168, 249, 255, 0.08);   /* 2. Semi-transparent background */
+    border-left: 5px solid #a8f9ff;    /* 14. Border */
+    border-radius: 1rem;    /* 15. Rounded corners */
+    font-size: 2rem;
+    font-style: italic;
+    color: #e0e0e0;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);    /* 3. Box shadow */
+}
+
+/* 6. Pseudo element with generated content */
+.blog-quote::before {
+    content: '"';
+    font-size: 8rem;
+    color: #a8f9ff;
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+/* Blog List */
+.blog-list {
+    margin: 2rem 0 2rem 3rem;
+    padding-left: 2rem;
+}
+
+.blog-list li {
+    font-size: 1.7rem;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+/* 11. Nth pseudo class for alternating list items */
+.blog-list li:nth-child(odd) {
+    background: rgba(168, 249, 255, 0.03);  /* 2. Semi-transparent background */
+    padding: 1rem;
+    border-radius: 0.5rem;   /* 15. Rounded corners */
+    margin-left: -1rem;
+}
+
+.blog-list li strong {
+    color: #a8f9ff;
+}
+
+/* Ordered list styling */
+ol.blog-list {
+    counter-reset: blog-counter;
+    list-style: none;
+}
+
+ol.blog-list li {
+    position: relative;  /*counter-increment: blog-counter;*/
+}
+
+/* 6. Pseudo element with generated content - custom numbering */
+ol.blog-list li::before {
+    position: absolute;
+    left: -3rem;
+    top: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    background: #a8f9ff;
+    color: black;
+    border-radius: 50%;  /* 15. Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+/* Blog Conclusion */
+.blog-conclusion {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border: 2px solid rgba(168, 249, 255, 0.3);    /* 14. Border */
+    border-radius: 1.5rem;   /* 15. Rounded corners */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);   /* 3. Box shadow */
+}
+
+.blog-conclusion p {
+    font-size: 1.8rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+/* Blog Tags */
+.blog-tags {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 2px solid rgba(168, 249, 255, 0.2);
+}
+
+.blog-tags h4 {
+    font-size: 1.6rem;
+    color: #a8f9ff;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;   /* 4. Text effect */
+    letter-spacing: 0.1rem;
+}
+
+.blog-tags .tag {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    background: rgba(168, 249, 255, 0.1);   /* 2. Semi-transparent background */
+    border: 1px solid #a8f9ff;   /* 14. Border */
+    border-radius: 2rem;   /* 15. Rounded corners */
+    font-size: 1.3rem;
+    color: #a8f9ff;
+    transition: 0.3s ease;   /* 18. Transition */
+    cursor: pointer;
+}
+
+/* 7. User action pseudo class */
+.blog-tags .tag:hover {
+    background: #a8f9ff;
+    color: black;
+    transform: translateY(-3px);   /* 17. Transform */
+    box-shadow: 0 5px 15px rgba(168, 249, 255, 0.4);   /* 3. Box shadow */
+}
+
+/* Blog Sidebar*/
+.blog-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebar-widget {
+    background: rgba(168, 249, 255, 0.05);    /* 2. Semi-transparent background */
+    padding: 3rem;
+    border-radius: 1rem;   /* 15. Rounded corners */
+    border: 1px solid rgba(168, 249, 255, 0.2);   /* 14. Border */
+    margin-bottom: 3rem;
+}
+
+.sidebar-widget h3 {
+    font-size: 2rem;
+    color: #a8f9ff;
+    margin-bottom: 2rem;
+}
+
+/* Blog Sidebar - Author Section  */
+
+.author-info {
+    text-align: center;
+}
+
+.author-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;  /* 15. Rounded corners */
+    object-fit: cover;
+    border: 3px solid #a8f9ff;   /* 14. Border */
+    box-shadow: 0 0 20px rgba(168, 249, 255, 0.3);  /* 3. Box shadow */
+    margin-bottom: 1.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.author-img:hover {
+    transform: scale(1.1);   /* 17. Transform */
+    box-shadow: 0 0 30px rgba(168, 249, 255, 0.5);   /* 3. Box shadow enhanced */
+}
+
+.author-info p {
+    font-size: 1.4rem;
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.author-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.author-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(168, 249, 255, 0.1);   /* 2. Semi-transparent background */
+    border: 2px solid #a8f9ff;    /* 14. Border */
+    border-radius: 50%;   /* 15. Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #a8f9ff;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+/* 7. User action pseudo class */
+.author-social a:hover {
+    background: #a8f9ff;
+    color: black;
+    transform: scale(1.2) translateY(-3px);  /* 17. Transform */
+    box-shadow: 0 5px 20px rgba(168, 249, 255, 0.4);   /* 3. Box shadow */
+}
+
+/* Category List */
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin-bottom: 1rem;
+}
+
+.category-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border-radius: 0.5rem;   /* 15. Rounded corners */
+    color: #ddd;
+    font-size: 1.4rem;
+    transition: 0.3s ease;    /* 18. Transition */
+}
+
+.category-list li a:hover {
+    background: rgba(168, 249, 255, 0.15);
+    color: #a8f9ff;
+    transform: translateX(5px);  /* 17. Transform */
+}
+
+.category-list li a span {
+    color: #a8f9ff;
+    font-size: 1.2rem;
+}
+
+/* Recent Posts */
+.recent-posts {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-posts li {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(168, 249, 255, 0.2);
+}
+
+.recent-posts li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.recent-posts li a {
+    display: block;
+    font-size: 1.5rem;
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.recent-posts li a:hover {
+    color: #a8f9ff;
+}
+
+.recent-posts time {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Newsletter Widget */
+.newsletter-widget {
+    background: linear-gradient(135deg, rgba(168, 249, 255, 0.1), rgba(168, 249, 255, 0.05));  /* 16. Gradient background */
+    border: 2px solid rgba(168, 249, 255, 0.3);     /* 14. Border */
+}
+
+.newsletter-widget p {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-newsletter-form input {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(168, 249, 255, 0.05);    /* 2. Semi-transparent background */
+    border: 2px solid rgba(168, 249, 255, 0.2);   /* 14. Border */
+    border-radius: 0.5rem;    /* 15. Rounded corners */
+    color: white;
+    font-size: 1.4rem;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.sidebar-newsletter-form input:focus {
+    border-color: #a8f9ff;
+    box-shadow: 0 0 15px rgba(168, 249, 255, 0.3);    /* 3. Box shadow */
+}
+
+.sidebar-newsletter-form .btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.4rem;
+}
+
+/* Blogs */
+.blog {
+    background: linear-gradient(to bottom, #16213e, #0f3460);  /* 16. Gradient background */
+    min-height: 100vh;
+    padding: 10rem 9% 5rem;
+}
+
+.blog-heading {
+    text-align: center;
+    font-size: 6rem;
+    margin-bottom: 2rem;
+}
+
+.blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+/* Using article for semantic HTML5 */
+.blog-post {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    background: rgba(168, 249, 255, 0.05);  /* 2. Semi-transparent background */
+    border-radius: 1.5rem;  /* 15. Rounded corners */
+    overflow: hidden;
+    border: 1px solid rgba(168, 249, 255, 0.2);  /* 14. Border */
+    transition: 0.4s ease;   /* 18. Transition */
+}
+
+/* 11. Nth pseudo class - :nth-of-type(even) for alternating layout */
+.blog-post:nth-of-type(even) {
+    grid-template-columns: 1fr 400px;
+}
+
+.blog-post:hover {
+    transform: translateY(-10px);   /* 17. Transform */
+    box-shadow: 0 10px 40px rgba(168, 249, 255, 0.3);   /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;   /* 18. Transition */
+}
+
+.blog-post:hover .blog-image img {
+    transform: scale(1.1);    /* 17. Transform */
+}
+
+.blog-content {
+    padding: 3rem;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* 13. Relational selector - adjacent sibling */
+.blog-category + .blog-date {
+    margin-left: auto;
+}
+
+.blog-date {
+    font-size: 1.3rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    line-height: 1.3;
+}
+
+.blog-content p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.blog-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a8f9ff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: 0.3s ease;    /* 18. Transition */
+}
+
+.blog-read-more:hover {
+    transform: translateX(5px);   /* 17. Transform */
+}
+
+.blog-read-more i {
+    transition: 0.3s ease;    /* 18. Transition */
+}
+
+.blog-read-more:hover i {
+    transform: translateX(5px);    /* 17. Transform */
+}
+
+/* Skills Section */
+.sub-title {
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.sub-title span {
+    color: #a8f9ff;
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    background: linear-gradient(to bottom, #16213e, black);    /* 16. Gradient background */
+}
+
+.skills-container {
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+.prof-skills {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #a8f9ff;
+}
+
+.professional-skills {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #a8f9ff;
+}
+
+/* Technical skils */
+.technical-skills {
+    width: 80%;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.technical-bars {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.skill {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* 8. Child combinator - direct child */
+.skill > .skill-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.skill-header i {
+    font-size: 2.5rem;
+}
+
+.skill-header p {
+    font-size: 1.6rem;
+    color: #a8f9ff;
+    margin: 0;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 10px;    /* 15. Rounded corners */
+    overflow: hidden;
+}
+
+.fill {
+    height: 10px;
+    width: 0;
+    background: linear-gradient(90deg, #00e0ff, #6a5acd);  /* 16. Gradient */
+    border-radius: 10px;  /* 15. Rounded corners */
+    animation: load 2s forwards;   /* 19. Animation */
+}
+
+.html-fill { --target-width: 90%; }
+.css-fill { --target-width: 85%; }
+.js-fill { --target-width: 60%; }
+.python-fill { --target-width: 75%; }
+.java-fill { --target-width: 70%; }
+
+/* 19. Keyframe animation */
+@keyframes load {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* Professional skills (Radial Bars) */
+.radial-bars {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 4rem 2rem;
+    justify-items: center;
+    margin-top: 40px;
+    padding: 0 2rem;
+}
+
+.radial-bar {
+    position: relative;
+    width: 180px;
+    height: 220px;
+}
+
+.radial-bar svg {
+    width: 180px;
+    height: 180px;
+    transform: rotate(-90deg); /* 17. Transform */
+}
+
+.progress-bar {
+    fill: none;
+    stroke: #222;
+    stroke-width: 12;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+.path {
+    fill: none;
+    stroke: #a8f9ff;
+    stroke-width: 12;
+    stroke-dasharray: 502;
+    stroke-linecap: round;
+    stroke-dashoffset: 502;
+}
+
+/* 19. Animations for different paths */
+.path1 { animation: animate-path1 2s forwards; }
+.path2 { animation: animate-path2 2s forwards; }
+.path3 { animation: animate-path3 2s forwards; }
+.path4 { animation: animate-path4 2s forwards; }
+.path5 { animation: animate-path5 2s forwards; }
+
+@keyframes animate-path1 { to { stroke-dashoffset: 50; } }   
+@keyframes animate-path2 { to { stroke-dashoffset: 50; } }   
+@keyframes animate-path3 { to { stroke-dashoffset: 100; } }  
+@keyframes animate-path4 { to { stroke-dashoffset: 75; } }   
+@keyframes animate-path5 { to { stroke-dashoffset: 100; } }  
+
+.radial-bar .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* 17. Transform */
+    font-size: 2rem;
+    color: white;
+    font-weight: 600;
+}
+
+.radial-bar .text {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);   /* 17. Transform */
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+/* Contact Secton */
+.contact {
+    background: linear-gradient(to bottom, black, #0f0f1e);/* 16. Gradient */
+    min-height: 100vh;
+    padding: 10rem 9% 5rem;
+}
+
+.contact .heading {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    margin-top: 5rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border: 1px solid rgba(168, 249, 255, 0.2);  /* 14. Border */
+    border-radius: 1rem;  /* 15. Rounded corners */
+    transition: 0.3s ease;    /* 18. Transition */
+}
+
+.info-box:hover {
+    transform: translateX(10px);   /* 17. Transform */
+    box-shadow: 0 5px 30px rgba(168, 249, 255, 0.2);  /* 3. Box shadow */
+    border-color: #a8f9ff;
+}
+
+.info-box i {
+    font-size: 3rem;
+    color: #a8f9ff;
+    min-width: 50px;
+}
+
+.info-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #a8f9ff;
+}
+
+.info-box p {
+    font-size: 1.4rem;
+    color: #ddd;
+}
+
+.contact-social {
+    padding: 2rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border: 1px solid rgba(168, 249, 255, 0.2); /* 14. Border */
+    border-radius: 1rem;   /* 15. Rounded corners */
+}
+
+.contact-social h3 {
+    font-size: 2rem;
+    color: #a8f9ff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    background: rgba(168, 249, 255, 0.1);   /* 2. Semi-transparent background */
+    border: 2px solid #a8f9ff; /* 14. Border */
+    border-radius: 50%;  /* 15. Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #a8f9ff;
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.social-links a:hover {
+    background: #a8f9ff;
+    color: black;
+    transform: scale(1.2) translateY(-5px);    /* 17. Transform with multiple values */
+    box-shadow: 0 10px 30px rgba(168, 249, 255, 0.5);  /* 3. Box shadow */
+}
+
+/* Contact Form */
+.contact-form {
+    background: rgba(168, 249, 255, 0.03); /* 2. Semi-transparent background */
+    padding: 4rem;
+    border-radius: 1.5rem; /* 15. Rounded corners */
+    border: 1px solid rgba(168, 249, 255, 0.2);  /* 14. Border */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    border: 2px solid rgba(168, 249, 255, 0.2); /* 14. Border */
+    border-radius: 0.5rem; /* 15. Rounded corners */
+    color: white;
+    font-size: 1.6rem;
+    transition: 0.3s ease;  /* 18. Transition */
+}
+
+/* 7. User action pseudo class - :focus */
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    border-color: #a8f9ff;
+    box-shadow: 0 0 20px rgba(168, 249, 255, 0.3);  /* 3. Box shadow */
+}
+
+/* 12. Validity pseudo class - :valid */
+.input-group input:valid,
+.input-group textarea:valid {
+    border-color: #4ade80;
+}
+
+/* 12. Validity pseudo class - :invalid (only after user interaction) */
+.input-group input:invalid:not(:placeholder-shown),
+.input-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #f87171;
+}
+
+.input-group label {
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.6rem;
+    color: #888;
+    pointer-events: none;
+    transition: 0.3s ease;  /* 18. Transition */
+}
+
+/* 13. Relational selector - general sibling combinator */
+.input-group input:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:valid ~ label,
+.input-group select:focus ~ label,
+.input-group select:valid ~ label {
+    top: -1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    color: #a8f9ff;
+    background: #0f0f1e;
+    padding: 0 0.5rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.submit-btn i {
+    transition: 0.3s ease;   /* 18. Transition */
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);   /* 17. Transform */
+}
+
+.reset-btn {
+    width: 200px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Newslettr Section */
+.newsletter {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); /* 16. Gradient background */
+    padding: 8rem 9%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.newsletter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.newsletter-content {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.newsletter-content h2 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-content p {
+    font-size: 1.8rem;
+    color: #ddd;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.newsletter-form {
+    background: rgba(168, 249, 255, 0.05);   /* 2. Semi-transparent background */
+    padding: 4rem;
+    border-radius: 1.5rem;   /* 15. Rounded corners */
+    border: 1px solid rgba(168, 249, 255, 0.2);    /* 14. Border */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 1.4rem;
+    color: #ddd;
+    cursor: pointer;
+}
+
+/* 12. Validity pseudo class for checkbox */
+.checkbox-group input[type="checkbox"]:checked {
+    accent-color: #a8f9ff;
+}
+
+.newsletter-btn {
+    width: 100%;
+}
+
+/* Footer*/
+.footer {
+    background: #000;
+    padding: 3rem 9%;
+    border-top: 2px solid rgba(168, 249, 255, 0.2);  /* 14. Border */
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin: 0.5rem 0;
+}
+
+.footer-content i {
+    color: #a8f9ff;
+    margin: 0 0.3rem;
+}
+
+/* Specify demostration */
+
+/* 20. Specificity consideration:
+   Lower specificity - can be overridden (0,0,1) */
+p {
+    line-height: 1.6;
+}
+
+/* Medium specificity - class selector (0,1,0) */
+.section-description {
+    color: #ddd;
+}
+
+/* Higher specificity - multiple classes (0,2,0) */
+.contact .section-description {
+    color: #bbb;
+}
+
+/* 10. Negation pseudo class - :not() */
+/* Select all links except those with class "logo" */
+a:not(.logo) {
+    text-decoration: none;
+}
+
+/* Select all input elements except checkboxes */
+input:not([type="checkbox"]):not([type="radio"]) {
+    display: block;
+}
+
+/* 9. Structural selector - :first-child */
+.timeline-item:first-child .timeline-content {
+    /* 16. Special gradient for first item */
+    background: linear-gradient(135deg, rgba(168, 249, 255, 0.1), rgba(168, 249, 255, 0.05));
+}
+
+/* 9. Structural selector - :last-child */
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 9. Structural selector - :only-child */
+.more-details p:only-child {
+    margin-bottom: 0;
+}
+
+/*Responsiveness with media queries */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    
+    .nav a {
+        margin-left: 2rem;
+        font-size: 1.7rem;
+    }
+
+    .social-sidebar {
+        right: 1rem;
+        width: 200px;
+    }
+}
+
+@media (max-width: 995px) {
+    .nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 1rem 4%;
+    }
+    
+    .nav a {
+        margin: 0.5rem 1rem;
+        font-size: 1.6rem;
+    }
+    
+    .home {
+        flex-direction: column;
+        margin: 5rem 4rem;
+    }
+
+    .home .home-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+    }
+
+    .home-img img {
+        width: 70vw;
+        height: 70vw;
+        margin-top: 4rem;
+    }
+
+    .social-sidebar {
+        position: static;
+        transform: none;
+        margin-top: 3rem;
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .about {
+        flex-direction: column;
+        text-align: center;
+        gap: 4rem;
+    }
+
+    .about-img img {
+        width: 70vw;
+        height: 70vw;
+        margin-top: 4rem;
+    }
+
+    .about-content {
+        padding: 0 2rem;
+        max-width: 100%;
+    }
+
+    .heading {
+        font-size: 4rem;
+    }
+
+    .about-content h2 {
+        font-size: 3rem;
+        text-align: center;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left;
+        padding-left: 6rem;
+        padding-right: 2rem;
+    }
+    
+    .timeline-item .timeline-dot {
+        left: 10px !important;
+        right: auto !important;
+    }
+    
+    .timeline-item .education-tags {
+        justify-content: flex-start !important;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-post {
+        grid-template-columns: 1fr !important;
+    }
+
+    .blog-image {
+        height: 300px;
+    }
+    
+    .blog-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+    
+    section {
+        padding: 8rem 5% 3rem;
+    }
+    
+    .home {
+        padding: 10rem 5% 5rem;
+    }
+    
+    .typing-text {
+        font-size: 2.5rem;
+    }
+    
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .contact-form {
+        padding: 2rem;
+    }
+    
+    .radial-bars {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .newsletter-form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 45%;
+    }
+    
+    .nav {
+        padding: 1rem 2%;
+    }
+    
+    .nav a {
+        margin: 0.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .home-img img,
+    .about-img img {
+        width: 90vw;
+        height: 90vw;
+    }
+    
+    .heading {
+        font-size: 3rem;
+    }
+    
+    .timeline-item {
+        padding-left: 5rem;
+    }
+    
+    .radial-bars {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-icons a {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.8rem;
+    }
+
+    .blog-image {
+        height: 250px;
+    }
+}
+
+/* Print queries */
+@media print {
+    /*Hide navigation and interactive elements when printing */
+    header, .social-sidebar, .footer {
+        display: none;
+    }
+    
+    /* Ensure good contrast for printing */
+    body {
+        background: white;
+        color: black;
+    }
+    
+    /* Remove shadows and effects for cleaner printing */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
+/* update */
