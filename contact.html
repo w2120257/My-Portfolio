@@ -83,37 +83,25 @@
       </div>
 
       <div class="contact-form">
-        <form action="mailto:sandupama.20231385@iit.ac.lk?subject=Contact from Portfolio" method="get" enctype="text/plain">
+        <form action="https://formspree.io/f/YOUR_ID" method="POST">
           <div class="input-group">
-            <input type="text" name="name" required>
+            <input type="text" name="name" id="name" required>
             <label for="name">Your Name</label>
           </div>
-
           <div class="input-group">
-            <input type="email" name="email" required>
+            <input type="email" name="email" id="email" required>
             <label for="email">Your Email</label>
           </div>
-
           <div class="input-group">
-            <input type="text" name="subject" required>
-            <label for="subject">Subject</label>
-          </div>
-
-          <div class="input-group">
-            <textarea name="message" rows="5" required></textarea>
+            <textarea name="message" id="message" rows="5" required></textarea>
             <label for="message">Your Message</label>
           </div>
-
           <div class="button-group">
-            <button type="submit" class="btn submit-btn">
-              Send Message <i class="fas fa-paper-plane"></i>
-            </button>
-            <button type="reset" class="btn reset-btn">
-              Clear Form <i class="fas fa-eraser"></i>
-            </button>
+            <button type="submit" class="btn submit-btn">Send Message</button>
           </div>
         </form>
-        <p class="fallback-note"><small>If the form doesn't open your email app, copy-paste this address: sandupama.20231385@iit.ac.lk</small></p>
+        <p class="fallback-note"><small>If the form doesn't open your email app, copy-paste this address:
+            sandupama.20231385@iit.ac.lk</small></p>
       </div>
 
     </div>

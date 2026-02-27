@@ -1466,11 +1466,18 @@ ol.blog-list li::before {
     animation: load 2s forwards;   /* 19. Animation */
 }
 
-.html-fill { --target-width: 90%; }
-.css-fill { --target-width: 85%; }
-.js-fill { --target-width: 60%; }
-.python-fill { --target-width: 75%; }
-.java-fill { --target-width: 70%; }
+.flutter-fill { --target-width: 100%%; }
+.dart-fill { --target-width: 100%%; }
+.firebase-fill { --target-width: 100%%; }
+.react-fill { --target-width: 100%%; }
+.js-fill { --target-width:100%; }
+.java-fill { --target-width:100%; }
+.python-fill { --target-width:100%; }
+.css-fill { --target-width:100%; }
+.html-fill { --target-width:100%; }
+.figma-fill { --target-width:100%; }
+.axure-fill { --target-width:100%; }
+.canva-fill { --target-width:100%; }
 
 /* 19. Keyframe animation */
 @keyframes load {
@@ -2138,6 +2145,24 @@ input:not([type="checkbox"]):not([type="radio"]) {
     }
 }
  
+/* --- MOBILE RESPONSIVENESS PATCH --- */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr !important; /* Forces one column on mobile */
+    }
+    section {
+        padding: 50px 5% !important;
+    }
+    .home {
+        flex-direction: column;
+        text-align: center;
+    }
+} 
  
  
  
@@ -2161,83 +2186,7 @@ input:not([type="checkbox"]):not([type="radio"]) {
  
  
  
- 
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
-/* update */
- 
+
  
  
  
